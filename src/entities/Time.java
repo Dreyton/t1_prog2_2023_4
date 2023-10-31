@@ -10,6 +10,8 @@ public class Time {
 	private List<Jogador> jogadores = new ArrayList<>();
 	private Estadio estadio;
 	private Jogador capitao;
+	private Integer saldoVitorias;
+	private Integer saldoGols;
 	
 	public Time(String nome, Estadio estadio) {
 		this.id = ++qtd;
@@ -56,7 +58,20 @@ public class Time {
 	public void setCapitao(Jogador capitao) {
 		this.capitao = capitao;
 	}
-	
-	
-	
+
+	public Integer getSaldoVitorias() {
+		return saldoVitorias == null ? 0 : saldoVitorias;
+	}
+
+	public void setSaldoVitorias(Integer saldoVitorias) {
+		this.saldoVitorias = saldoVitorias;
+	}
+
+	public Integer getSaldoGols() {
+		return saldoGols == null ? 0 : saldoGols;
+	}
+
+	public void setSaldoGols(Integer saldoGols) {
+		this.saldoGols = saldoGols;
+	}
 }

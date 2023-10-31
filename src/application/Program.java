@@ -79,6 +79,8 @@ public class Program {
 		c1.addPartida(p5);
 		c1.addPartida(p6);
 		
+		c1.listarPartidas();
+		c1.tabelaCampeonato();
 	}
 
 }

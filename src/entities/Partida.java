@@ -47,7 +47,7 @@ public class Partida {
 	}
 
 	public Integer getPontuacaoMandante() {
-		return pontuacaoMandante;
+		return pontuacaoMandante == null ? 0: pontuacaoMandante;
 	}
 
 	public void setPontuacaoMandante(Integer pontuacaoMandante) {
@@ -55,11 +55,24 @@ public class Partida {
 	}
 
 	public Integer getPontuacaoVisitante() {
-		return pontuacaoVisitante;
+		return pontuacaoVisitante == null ? 0: pontuacaoVisitante;
 	}
 
 	public void setPontuacaoVisitante(Integer pontuacaoVisitante) {
 		this.pontuacaoVisitante = pontuacaoVisitante;
 	}
-
+	
+	public boolean ocorreuPartida() {
+		return data.isBefore(LocalDateTime.now());
+	}
+ 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Partida " + id + "\n");
+		sb.append("(M) " + mandante.getNome() + " vs " + visitante.getNome()+ " (V)" + "\n");
+		sb.append("(M) " + getPontuacaoMandante() + " vs " + getPontuacaoVisitante() + " (V)" + "\n");
+		return sb.toString();
+	}
+	
 }
