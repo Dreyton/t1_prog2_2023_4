@@ -15,6 +15,11 @@ public class Campeonato {
 		this.id = ++qtd;
 		this.ano = ano;
 		this.nome = nome;
+		//novo campeonato, zera saldo de vitorias e gols
+		for (Time time : times) {
+			time.setSaldoVitorias(0);
+			time.setSaldoGols(0);
+		}
 	}
 
 	public Integer getId() {
@@ -68,32 +73,25 @@ public class Campeonato {
 	public void tabelaCampeonato() {
 		// 1 - saldo de vitorias
 		// 2 - saldo de gols
-		/*
-		 * int n = times.size(); int[] saldoVitorias = new int[n]; int[] saldoGols = new
-		 * int[n];
-		 */
-
 		for (Partida partida : partidas) {
 			if (partida.ocorreuPartida()) {
 				Time mandante = partida.getMandante();
 				Time visitante = partida.getVisitante();
 				int saldoMandante = partida.getPontuacaoMandante() - partida.getPontuacaoVisitante();
 				for (Time time : times) {
-					if (mandante.getId() == time.getId() && saldoMandante > 0) {
+					if (mandante.getId() == time.getId()) {
 						time.setSaldoGols(time.getSaldoGols() + saldoMandante);
-						time.setSaldoVitorias(time.getSaldoVitorias() + 1);
+						if (saldoMandante > 0)
+							time.setSaldoVitorias(time.getSaldoVitorias() + 1);
+						if (saldoMandante < 0)
+							time.setSaldoVitorias(time.getSaldoVitorias() - 1);
 					}
-					if (mandante.getId() == time.getId() && saldoMandante < 0) {
-						time.setSaldoGols(time.getSaldoGols() + saldoMandante);
-						time.setSaldoVitorias(time.getSaldoVitorias() - 1);
-					}
-					if (visitante.getId() == time.getId() && saldoMandante > 0) {
+					if (visitante.getId() == time.getId()) {
 						time.setSaldoGols(time.getSaldoGols() - saldoMandante);
-						time.setSaldoVitorias(time.getSaldoVitorias() - 1);
-					}
-					if (visitante.getId() == time.getId() && saldoMandante < 0) {
-						time.setSaldoGols(time.getSaldoGols() - saldoMandante);
-						time.setSaldoVitorias(time.getSaldoVitorias() + 1);
+						if (saldoMandante > 0)
+							time.setSaldoVitorias(time.getSaldoVitorias() - 1);
+						if (saldoMandante < 0)
+							time.setSaldoVitorias(time.getSaldoVitorias() + 1);
 					}
 				}
 			}
