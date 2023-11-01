@@ -3,7 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Time {
+public class Time implements Comparable<Time>{
 	private static int qtd = 0;
 	private Integer id;
 	private String nome;
@@ -73,5 +73,13 @@ public class Time {
 
 	public void setSaldoGols(Integer saldoGols) {
 		this.saldoGols = saldoGols;
+	}
+
+	@Override
+	public int compareTo(Time other) {
+		int cmpVitorias = this.saldoVitorias.compareTo(other.getSaldoVitorias());
+		if(cmpVitorias > 0 || cmpVitorias < 0)
+			return -cmpVitorias;
+		return -this.saldoGols.compareTo(other.getSaldoGols());
 	}
 }

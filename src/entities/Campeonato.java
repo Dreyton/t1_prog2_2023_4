@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Campeonato {
@@ -96,10 +97,11 @@ public class Campeonato {
 				}
 			}
 		}
+		Collections.sort(times);
 		for (Time time : times) {
-			System.out.println("Time " + time.getNome());
-			System.out.println("Saldo Vitórias: " + time.getSaldoVitorias());
-			System.out.println("Saldo Gols " + time.getSaldoGols());
+			System.out.print("Time " + time.getNome());
+			System.out.print(", Saldo Vitórias: " + time.getSaldoVitorias());
+			System.out.println(", Saldo Gols " + time.getSaldoGols());
 		}
 	}
 

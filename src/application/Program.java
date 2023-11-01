@@ -62,14 +62,17 @@ public class Program {
 		p2.setPontuacaoVisitante(13);
 		
 		Partida p3 = new Partida(LocalDateTime.parse("2023-10-02T20:00:00"), t2, t1);
-		p3.setPontuacaoMandante(11);
+		p3.setPontuacaoMandante(10);
 		p3.setPontuacaoVisitante(10);
 		
 		Partida p4 = new Partida(LocalDateTime.parse("2023-10-16T21:00:00"), t2, t3);
 		p4.setPontuacaoMandante(10);
 		p4.setPontuacaoVisitante(17);
 		
-		Partida p5 = new Partida(LocalDateTime.parse("2023-11-16T21:00:00"), t3, t1);
+		//Partida p5 = new Partida(LocalDateTime.parse("2023-11-16T21:00:00"), t3, t1);
+		Partida p5 = new Partida(LocalDateTime.parse("2023-10-31T21:00:00"), t3, t1);
+		p5.setPontuacaoMandante(10);
+		p5.setPontuacaoVisitante(7);
 		Partida p6 = new Partida(LocalDateTime.parse("2023-11-30T22:00:00"), t3, t2);
 		
 		c1.addPartida(p1);
